@@ -4,6 +4,8 @@ public class Humain {
 	private String nom;
 	private String boissonfavorite;
 	private int argent;
+	protected int nbConnaissance;
+	protected Humain[] memoire = new Humain[30];
 	
 	
 	
@@ -13,13 +15,9 @@ public class Humain {
 		this.argent = argent;
 	}
 
-
-
 	public String getNom() {
 		return nom;
 	}
-
-
 
 	public int getArgent() {
 		return argent;
@@ -38,14 +36,12 @@ public class Humain {
 		}
 	}
 	
-	
-	
-	public int gagnerArgent(int gain) {
+	protected int gagnerArgent(int gain) {
 		argent += gain;
 		return argent;
 	}
 	
-	public int perdreArgent(int perte) {
+	protected int perdreArgent(int perte) {
 		argent -= perte;
 		return argent;
 	}
@@ -58,5 +54,38 @@ public class Humain {
 		parler("Mmmm, un bon verre de " + boissonfavorite  + "! GLOUPS !");
 	}
 	
+	public void faireConnaissanceAvec(Humain autrehumain) {
+		direBonjour();
+		autrehumain.repondre(this);
+		memoriser(autrehumain);
+		
+	}
 	
+	private void memoriser(Humain humain) {
+		if (memoire.length == nbConnaissance) {
+			for(int i=0;i<nbConnaissance-1;i++) {
+				memoire[i] = memoire[i+1];
+			}
+			memoire[nbConnaissance-1] = humain; 
+		}else {
+			memoire[nbConnaissance] = humain;
+			nbConnaissance++;
+		}
+	}
+	
+	private void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+	}
+	
+	public void listerConnaissance() {
+		String connaissance = "";
+		for (int i=0;i<nbConnaissance;i++) {
+			connaissance += memoire[i].getNom();
+			if (i<nbConnaissance-1) {
+				connaissance += ", ";
+			}
+		}
+		parler("Je connais beaucoup de monde dont : " + connaissance);
+	}
 }
