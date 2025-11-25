@@ -61,7 +61,7 @@ public class Humain {
 		
 	}
 	
-	private void memoriser(Humain humain) {
+	protected void memoriser(Humain humain) {
 		if (memoire.length == nbConnaissance) {
 			for(int i=0;i<nbConnaissance-1;i++) {
 				memoire[i] = memoire[i+1];

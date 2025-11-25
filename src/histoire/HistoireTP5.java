@@ -1,10 +1,12 @@
 package histoire;
 
 import personnages.Commercant;
+import personnages.GrandMere;
 import personnages.Ronin;
 import personnages.Samourai;
 import personnages.Traitre;
 import personnages.Yakuza;
+import personnages.Humain;
 
 public class HistoireTP5 {
 	
@@ -47,6 +49,24 @@ public class HistoireTP5 {
 		masako.faireConnaissanceAvec(yaku);
 		masako.faireLeGentil(yaku);
 		masako.faireConnaissanceAvec(roro);
+		
+		System.out.println("-- 5 --");
+		Samourai akira = new Traitre("Miyamoto", "Akira", "whisky", 50);
+		Ronin hiro = new Traitre("Miyamoto", "Hiro", "saké", 20);
+		Humain nori = new Traitre("Miyamoto", "Nori", "whisky", 70);
+		
+		System.out.println("-- 6 les grands mères --");
+		GrandMere grandMere = new GrandMere("Grand-Mère", 10);
+		grandMere.faireConnaissanceAvec(akimoto);
+		grandMere.faireConnaissanceAvec(yaku);
+		grandMere.faireConnaissanceAvec(masako);
+		grandMere.faireConnaissanceAvec(kumi);
+		grandMere.faireConnaissanceAvec(marco);
+		grandMere.faireConnaissanceAvec(chonin);
+		grandMere.ragoter();
+		
+		
+		
 		
 	}
 }
